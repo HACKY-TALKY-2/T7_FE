@@ -30,6 +30,9 @@ export default function LoginPage() {
                 userId: data.get('userId'),
                 password: data.get('password')
             })
+            localStorage.setItem("token", "Bearer " + res.data.token);
+            localStorage.setItem("isAdmin", res.data.isAdmin);
+            localStorage.setItem("userId", data.get('userId'));
             movePage("/");
         } catch (e) {
             console.log(e.message);
@@ -37,16 +40,6 @@ export default function LoginPage() {
                 alert("비밀번호가 잘못되었습니다");
             }
         }
-
-
-        console.log({
-            userId: data.get('userId'),
-            password: data.get('password'),
-        });
-
-        console.log(res.data.token);
-        localStorage.setItem("token", "Bearer " + res.data.token);
-        localStorage.setItem("isAdmin", res.data.isAdmin);
     };
 
     return (
