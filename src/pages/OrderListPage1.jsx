@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-function OrderListPage() {
+function OrderListPage1() {
   return <div>hi</div>;
 }
 
-export default OrderListPage;
+export default OrderListPage1;
