@@ -35,10 +35,10 @@ function OrderList(props) {
       <Flex
         admin={props.admin}
         topic={orderItems[i]}
-        onChangeMode={(nickname) => {
+        onChangeMode={(orderId) => {
           const lst = [];
           for (let i = 0; i < orderItems.length; i++) {
-            if (orderItems[i].nickname !== nickname) {
+            if (orderItems[i].orderId !== orderId) {
               lst.push(orderItems[i]);
             }
           }

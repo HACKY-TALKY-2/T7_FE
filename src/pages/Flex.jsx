@@ -1,8 +1,21 @@
 import React from "react";
 import "./Flex.css";
 import Button from "@mui/material/Button";
+import axios from "axios";
 
 function Flex(props) {
+  const handleSubmit = async (orderId) => {
+    const res = await axios.post(
+      "http://13.58.200.222:3001/admin/order/" + orderId,
+      {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  };
+
   const menuList = props.menuList;
   const orderlist = [];
   let sumCost = 0;
@@ -27,7 +40,8 @@ function Flex(props) {
       <Button
         variant="contained"
         onClick={(event) => {
-          props.onChangeMode(props.topic.userId);
+          props.onChangeMode(props.topic.orderId);
+          handleSubmit(props.topic.orderId);
         }}
       >
         완료
