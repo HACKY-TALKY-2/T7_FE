@@ -1,45 +1,48 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
-import Button from "@mui/material/Button";
+//import Button from "@mui/material/Button";
 import Flex from "./Flex";
 import "./OrderList.css";
+import axios from "axios";
 
 function OrderList(props) {
-  const [topics, setTopics] = useState([
-    {
-      orderOrder: 1,
-      nickname: "asdd",
-      menu: [
-        { name: "아메리카노", count: 3, price: 1000 },
-        { name: "카페라떼햣", count: 3, price: 1000 },
-      ],
-      orderAt: "12:30",
-    },
-    {
-      orderOrder: 2,
-      nickname: "asdsd",
-      menu: [{ name: "a", count: 2, price: 1000 }],
-      orderAt: "12:40",
-    },
-  ]);
+  const [orderItems, setOrderItems] = useState([]);
+  useEffect(() => {
+    fetchOrderItems();
+  }, []);
+
+  async function fetchOrderItems() {
+    return await axios
+      .get("http://13.58.200.222:3001/order/queue", {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setOrderItems(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   const orderList = [];
-  for (let i = 0; i < topics.length; i++) {
+  for (let i = 0; i < orderItems.length; i++) {
     orderList.push(
       <Flex
         admin={props.admin}
-        topic={topics[i]}
+        topic={orderItems[i]}
         onChangeMode={(nickname) => {
           const lst = [];
-          for (let i = 0; i < topics.length; i++) {
-            if (topics[i].nickname !== nickname) {
-              lst.push(topics[i]);
+          for (let i = 0; i < orderItems.length; i++) {
+            if (orderItems[i].nickname !== nickname) {
+              lst.push(orderItems[i]);
             }
           }
-          setTopics(lst);
+          setOrderItems(lst);
         }}
-        menuList={topics[i].menu}
+        menuList={orderItems[i].menu}
       ></Flex>
     );
   }
