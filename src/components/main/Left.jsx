@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@mui/material";
 import Menu from "../../assets/main/Menu";
 
-const Wrapper = styled.div`
+const Wrapper2 = styled.div`
   width: 70vw;
   background-color: white;
   display: flex;
@@ -36,52 +36,52 @@ function Left() {
   };
 
   return (
-    <Wrapper>
-      <MenuBox>
-        <div>
-          <Button color="success">coffee</Button>
-          <Button color="success">tea</Button>
-          <Button color="success">ade</Button>
-          <Button color="success">others</Button>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Menu onMenuItemClick={handleMenuItemClick} />
-        </div>
-      </MenuBox>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <div style={{ display: "flex" }}>
-          <Button
-            color="success"
-            onClick={() => {
-              number !== 1 ? setNumber(number - 1) : setNumber(1);
-              number !== 1
-                ? setTotalPrice((totalPrice * (number - 1)) / number)
-                : setTotalPrice(totalPrice);
-            }}
-          >
-            -
-          </Button>
-          <h3>{number}</h3>
-          <Button
-            color="success"
-            onClick={() => {
-              setNumber(number + 1);
-              setTotalPrice((totalPrice * (number + 1)) / number);
-            }}
-          >
-            +
-          </Button>
-        </div>
-        <h3>price: {totalPrice}\</h3>
-        <Button color="success">add</Button>
-      </div>
-    </Wrapper>
+      <Wrapper2>
+          <MenuBox>
+              <div>
+                  <Button color="success">coffee</Button>
+                  <Button color="success">tea</Button>
+                  <Button color="success">ade</Button>
+                  <Button color="success">others</Button>
+              </div>
+              <div
+                  style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                  }}
+              >
+                  <Menu onMenuItemClick={handleMenuItemClick} />
+              </div>
+          </MenuBox>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div style={{ display: "flex" }}>
+                  <Button
+                      color="success"
+                      onClick={() => {
+                          number !== 1 ? setNumber(number - 1) : setNumber(1);
+                          number !== 1
+                              ? setTotalPrice((totalPrice * (number - 1)) / number)
+                              : setTotalPrice(totalPrice);
+                      }}
+                  >
+                      -
+                  </Button>
+                  <h3>{number}</h3>
+                  <Button
+                      color="success"
+                      onClick={() => {
+                          setNumber(number + 1);
+                          setTotalPrice((totalPrice * (number + 1)) / number);
+                      }}
+                  >
+                      +
+                  </Button>
+              </div>
+              <h3>price: {totalPrice}\</h3>
+              <Button color="success">add</Button>
+          </div>
+      </Wrapper2>
   );
 }
 

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Button } from "@mui/material";
 import Order from "../../assets/main/Order";
 
-const Wrapper = styled.div`
+const Wrapper3 = styled.div`
   width: 30vw;
   background-color: white;
   display: flex;
@@ -21,7 +21,7 @@ const OrderBox = styled.div`
 
 function Right() {
   return (
-    <Wrapper>
+    <Wrapper3>
       <OrderBox>
         <Order />
       </OrderBox>
@@ -29,7 +29,7 @@ function Right() {
         <h3>Total Price</h3>
         <Button color="success">order</Button>
       </div>
-    </Wrapper>
+    </Wrapper3>
   );
 }
 
