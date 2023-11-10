@@ -18,15 +18,18 @@ function Menu({ onMenuItemClick }) {
   }, []);
 
   async function fetchMenuItems() {
-    return await axios.get("http://13.58.200.222:3001/order/menu", {
-      headers: {
-        Authorization: localStorage.getItem("token")
-      }
-    }).then((res) => {
-      setMenuItems(res.data);
-    }).catch((err) => {
-      console.log(err);
-    })
+    return await axios
+      .get("http://13.58.200.222:3001/order/menu", {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setMenuItems(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -40,7 +43,9 @@ function Menu({ onMenuItemClick }) {
             flexDirection: "column",
             alignItems: "center",
           }}
-          onClick={() => onMenuItemClick(item.price)}
+          onClick={() =>
+            onMenuItemClick(item.price, item.name, item.id, item.category)
+          }
         >
           <img src={item.image} style={{ width: "30vw", height: "50vh" }} />
           <div style={{ display: "flex", gap: "2vw" }}>
