@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 const Wrapper = styled.div`
   width: 40vw;
@@ -13,28 +14,19 @@ const Wrapper = styled.div`
 function Menu({ onMenuItemClick }) {
   const [menuItems, setMenuItems] = useState([]);
   useEffect(() => {
-    fetchMenuItems().then((data) => {
-      setMenuItems(data);
-    });
+    fetchMenuItems();
   }, []);
 
   async function fetchMenuItems() {
-    return [
-      {
-        id: 1,
-        name: "Item 1",
-        price: "1000",
-        category: "Drinks",
-        image: "/images/item1.jpg",
-      },
-      {
-        id: 2,
-        name: "Item 2",
-        price: "1500",
-        category: "Food",
-        image: "/images/item2.jpg",
-      },
-    ];
+    return await axios.get("http://13.58.200.222:3001/order/menu", {
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
+    }).then((res) => {
+      setMenuItems(res.data);
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
   return (

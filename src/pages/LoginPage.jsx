@@ -21,7 +21,7 @@ export default function LoginPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        const res = await axios.post("http://localhost:3000/auth/login", {
+        const res = await axios.post("http://13.58.200.222:3001/auth/login", {
             userId: data.get('userId'),
             password: data.get('password')
         })

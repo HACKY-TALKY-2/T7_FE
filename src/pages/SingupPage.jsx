@@ -21,7 +21,7 @@ export default function SignupPage() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        const res = await axios.post("http://localhost:3000/auth/signup", {
+        const res = await axios.post("http://13.58.200.222:3001/auth/signup", {
             userId: data.get('userId'),
             password: data.get('password')
         }).then(() => {
