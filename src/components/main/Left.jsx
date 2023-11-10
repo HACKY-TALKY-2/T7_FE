@@ -24,6 +24,11 @@ function Left() {
   const [number, setNumber] = useState(1);
   const [totalPrice, setTotalPrice] = useState(1000);
 
+  const handleMenuItemClick = (price) => {
+    setNumber(1);
+    setTotalPrice(price);
+  };
+
   return (
     <Wrapper>
       <MenuBox>
@@ -40,7 +45,7 @@ function Left() {
             justifyContent: "center",
           }}
         >
-          <Menu />
+          <Menu onMenuItemClick={handleMenuItemClick} />
         </div>
       </MenuBox>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -50,8 +55,8 @@ function Left() {
             onClick={() => {
               number !== 1 ? setNumber(number - 1) : setNumber(1);
               number !== 1
-                ? setTotalPrice(1000 * (number - 1))
-                : setTotalPrice(1000);
+                ? setTotalPrice((totalPrice * (number - 1)) / number)
+                : setTotalPrice(totalPrice);
             }}
           >
             -
@@ -61,7 +66,7 @@ function Left() {
             color="success"
             onClick={() => {
               setNumber(number + 1);
-              setTotalPrice(1000 * (number + 1));
+              setTotalPrice((totalPrice * (number + 1)) / number);
             }}
           >
             +

@@ -46,7 +46,7 @@ function OrderList(props) {
 
   return (
     <>
-      {/* <div>
+      <div>
         <div className="Header">
           <div>닉네임</div>
           <div>주문번호</div>
@@ -55,9 +55,9 @@ function OrderList(props) {
           <div>가격</div>
           <div>주문시간</div>
           <div>총 가격</div>
-        </div> */}
-      <div>{orderList}</div>
-      {/* </div> */}
+        </div>
+        <div>{orderList}</div>
+      </div>
     </>
   );
 }
