@@ -11,6 +11,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -18,26 +19,25 @@ import axios from "axios";
 const defaultTheme = createTheme();
 
 export default function SignupPage() {
+    const movePage = useNavigate();
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        const res = await axios.post("http://13.58.200.222:3001/auth/signup", {
-            userId: data.get('userId'),
-            password: data.get('password')
-        }).then(() => {
-            console.log({
+
+        try {
+            await axios.post("http://13.58.200.222:3001/auth/signup", {
                 userId: data.get('userId'),
-                password: data.get('password'),
+                password: data.get('password')
             });
 
-            console.log(res);
-        }).catch((error) => {
-            if(error.response.status == 409) {
+            alert("회원가입이 완료되었습니다.")
+            movePage("/login")
+        } catch (err) {
+            if(err.response.status == 409) {
                 alert("중복된 아이디입니다");
             }
-        })
-
-
+        }
     };
 
     return (
@@ -92,7 +92,7 @@ export default function SignupPage() {
                         </Button>
                         <Grid container justifyContent="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="/login" variant="body2">
                                     Already have an account? Sign in
                                 </Link>
                             </Grid>
