@@ -12,7 +12,7 @@ function OrderList(props) {
       nickname: "asdd",
       menu: [
         { name: "아메리카노", count: 3, price: 1000 },
-        { name: "카페라떼햣", count: 3, price: 1000 },
+        { name: "카페라떼", count: 3, price: 1000 },
       ],
       orderAt: "12:30",
     },
