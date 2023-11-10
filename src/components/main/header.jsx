@@ -16,7 +16,7 @@ function Header() {
 
   return (
     <Wrapper>
-      <h3 style={{ marginLeft: "7vw" }}>user.name</h3>
+      <h3 style={{ marginLeft: "7vw" }}>{localStorage.getItem("userId")}</h3>
       <Button
         color="success"
         onClick={() => navigate("/orderlist1")}

@@ -3,6 +3,7 @@ import { Button } from "@mui/material";
 import {useState} from "react";
 import Menu from "../../assets/main/Menu.jsx";
 import Order from "../../assets/main/Order.jsx";
+import axios from "axios";
 
 const Wrapper1 = styled.div`
   width: 100vw;
@@ -68,6 +69,20 @@ function Contents() {
         setOrder([...order, {id: id, name: name, number: number, totalPrice: totalPrice}])
     }
 
+    function onOrderClickHandler() {
+        const data = order.map((item) => ({menuId: item.id, count: item.number}));
+        try{
+            axios.post("http://13.58.200.222:3001/order", data, {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                }
+            });
+            setOrder([]);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     return (
     <Wrapper1>
         <Wrapper2>
@@ -124,7 +139,7 @@ function Contents() {
             </OrderBox>
             <div>
                 <h3>Total Price</h3>
-                <Button color="success">order</Button>
+                <Button color="success" onClick={onOrderClickHandler}>order</Button>
             </div>
         </Wrapper3>
     </Wrapper1>
