@@ -10,8 +10,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
-import Link from "@mui/material/Link";
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
@@ -19,27 +17,22 @@ import Link from "@mui/material/Link";
 const defaultTheme = createTheme();
 
 export default function LoginPage() {
-    const movePage = useNavigate();
-
     const handleSubmit = async (event) => {
-        const data = new FormData(event.currentTarget);
         event.preventDefault();
-        let res;
-        try {
-            res = await axios.post("http://13.58.200.222:3001/auth/login", {
-                userId: data.get('userId'),
-                password: data.get('password')
-            })
-            localStorage.setItem("token", "Bearer " + res.data.token);
-            localStorage.setItem("isAdmin", res.data.isAdmin);
-            localStorage.setItem("userId", data.get('userId'));
-            movePage("/");
-        } catch (e) {
-            console.log(e.message);
-            if(e.response.status == 401) {
-                alert("비밀번호가 잘못되었습니다");
-            }
-        }
+        const data = new FormData(event.currentTarget);
+        const res = await axios.post("http://13.58.200.222:3001/auth/login", {
+            userId: data.get('userId'),
+            password: data.get('password')
+        })
+
+        console.log({
+            userId: data.get('userId'),
+            password: data.get('password'),
+        });
+
+        console.log(res.data.token);
+        localStorage.setItem("token", "Bearer " + res.data.token);
+        localStorage.setItem("isAdmin", res.data.isAdmin);
     };
 
     return (
@@ -92,17 +85,9 @@ export default function LoginPage() {
                         >
                             Login
                         </Button>
-                        <Grid container justifyContent="flex-end">
-                            <Grid item>
-                                <Link href="/signup" variant="body2">
-                                    회원이 아니라면 회원가입하세요
-                                </Link>
-                            </Grid>
-                        </Grid>
                     </Box>
                 </Box>
             </Container>
         </ThemeProvider>
     );
 }
-

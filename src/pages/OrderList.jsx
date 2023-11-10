@@ -27,6 +27,8 @@ function OrderList(props) {
       });
   }
 
+  console.log(orderItems);
+
   const orderList = [];
   for (let i = 0; i < orderItems.length; i++) {
     orderList.push(
@@ -47,20 +49,23 @@ function OrderList(props) {
     );
   }
 
+  console.log(orderList);
+
   return (
     <>
-      {/* <div>
+      <div>
         <div className="Header">
-          <div>닉네임</div>
-          <div>주문번호</div>
-          <div>메뉴</div>
-          <div>수량</div>
-          <div>가격</div>
-          <div>주문시간</div>
-          <div>총 가격</div>
-        </div> */}
-      <div>{orderList}</div>
-      {/* </div> */}
+          <div className="nn">닉네임</div>
+          <div className="on">주문번호</div>
+          <div className="me">메뉴</div>
+          {/* <div className="co">수량</div>
+          <div className="pr">가격</div> */}
+
+          <div className="tc">총 가격</div>
+          <div className="ot">주문시간</div>
+        </div>
+        <div>{orderList}</div>
+      </div>
     </>
   );
 }

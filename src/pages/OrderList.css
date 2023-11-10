@@ -34,10 +34,26 @@
 .AdminButton:hover {
   background-color: #45a049;
 } */
-/* .Header {
-  margin: 5vw;
-  padding-bottom: 5vh;
+.Header {
   display: flex;
   flex-direction: row;
   border-bottom: solid 1.5px gray;
-} */
+  padding: 1vw;
+  align-items: center;
+  justify-content: center;
+}
+.nn {
+  width: 12vw;
+}
+.on {
+  width: 8vw;
+}
+.me {
+  width: 40vw;
+}
+.tc {
+  width: 30vw;
+}
+.ot {
+  width: 10vw;
+}
