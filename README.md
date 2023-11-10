@@ -1,8 +1,9 @@
-# React + Vite
+# 역삼역 근처 바쁜 직장인들을 위한 사내 카페 주문 웹
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 1. 원하는 음료를 클릭, 수량 선택, 장바구니 담기, 주문 넣기
 
-Currently, two official plugins are available:
+# 2. 주문리스트를 통해 자신의 주문 상태 파악
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 3. 제조 완료 버튼으로 각각의 주문 상태 업데이트
+
+# 4. 유료 카페의 경우 사내 복지 포인트에서 자동으로 금액 차감
