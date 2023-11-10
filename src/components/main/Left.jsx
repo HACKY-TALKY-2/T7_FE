@@ -22,11 +22,17 @@ const MenuBox = styled.div`
 
 function Left() {
   const [number, setNumber] = useState(1);
+  const [name, setName] = useState("");
+  const [id, setId] = useState(0);
+  const [category, setCategory] = useState("");
   const [totalPrice, setTotalPrice] = useState(1000);
 
-  const handleMenuItemClick = (price) => {
+  const handleMenuItemClick = (price, name, id, category) => {
     setNumber(1);
     setTotalPrice(price);
+    setName(name);
+    setId(id);
+    setCategory(category);
   };
 
   return (
