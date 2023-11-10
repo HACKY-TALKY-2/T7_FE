@@ -6,7 +6,8 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Button from "@mui/material/Button";
 import MainPage from "./pages/MainPage";
-import OrderListPage from "./pages/OrderListPage";
+import OrderListPage1 from "./pages/OrderListPage1";
+import OrderListPage2 from "./pages/OrderListPage2";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -20,7 +21,8 @@ function App() {
     <Wrapper>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/orderlist" element={<OrderListPage />} />
+        <Route path="/orderlist1" element={<OrderListPage1 />} />
+        <Route path="/orderlist2" element={<OrderListPage2 />} />
       </Routes>
     </Wrapper>
   );
