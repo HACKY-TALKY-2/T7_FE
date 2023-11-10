@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { Button } from "@mui/material";
-import Left from "./Left";
-import Right from "./Right";
 import {useState} from "react";
 import Menu from "../../assets/main/Menu.jsx";
 import Order from "../../assets/main/Order.jsx";
@@ -55,6 +53,7 @@ function Contents() {
     const [id, setId] = useState(0);
     const [category, setCategory] = useState("");
     const [totalPrice, setTotalPrice] = useState(1000);
+    const [order, setOrder] = useState([]);
 
     const handleMenuItemClick = (price, name, id, category) => {
         setNumber(1);
@@ -63,7 +62,13 @@ function Contents() {
         setId(id);
         setCategory(category);
     };
-  return (
+
+    function onAddCartClickHandler(id, name, number, totalPrice) {
+        console.log(id, name, number, totalPrice);
+        setOrder([...order, {id: id, name: name, number: number, totalPrice: totalPrice}])
+    }
+
+    return (
     <Wrapper1>
         <Wrapper2>
             <MenuBox>
@@ -108,12 +113,14 @@ function Contents() {
                     </Button>
                 </div>
                 <h3>price: {totalPrice}\</h3>
-                <Button color="success">add</Button>
+                <Button color="success" onClick={() => onAddCartClickHandler(id, name, number, totalPrice)}>add</Button>
             </div>
         </Wrapper2>
         <Wrapper3>
             <OrderBox>
-                <Order />
+                {order.map((item) => (
+                    <Order menu={item} key={item.id}/>
+                )) }
             </OrderBox>
             <div>
                 <h3>Total Price</h3>

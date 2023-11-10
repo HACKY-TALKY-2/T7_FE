@@ -10,11 +10,11 @@ const Wrapper = styled.div`
   background-color: white;
 `;
 
-function Order() {
+function Order(props) {
   return (
     <Wrapper>
-      <p style={{ marginLeft: "2vw" }}>name</p>
-      <p>number</p>
+      <p style={{ marginLeft: "2vw" }}>{props.menu.name}</p>
+      <p>{props.menu.number}</p>
       <Button color="success">X</Button>
     </Wrapper>
   );
