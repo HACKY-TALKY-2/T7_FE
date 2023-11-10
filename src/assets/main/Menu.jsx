@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   padding: 10px;
 `;
 
-function Menu() {
+function Menu({ onMenuItemClick }) {
   const [menuItems, setMenuItems] = useState([]);
   useEffect(() => {
     fetchMenuItems().then((data) => {
@@ -48,9 +48,10 @@ function Menu() {
             flexDirection: "column",
             alignItems: "center",
           }}
+          onClick={() => onMenuItemClick(item.price)}
         >
           <img src={item.image} style={{ width: "30vw", height: "50vh" }} />
-          <div style={{ display: "flex", gap: "5vw" }}>
+          <div style={{ display: "flex", gap: "2vw" }}>
             <p>{item.name}</p>
             <p>{item.price}\</p>
           </div>
