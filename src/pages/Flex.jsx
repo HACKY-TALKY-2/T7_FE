@@ -1,8 +1,21 @@
 import React from "react";
 import "./Flex.css";
 import Button from "@mui/material/Button";
+import axios from "axios";
 
 function Flex(props) {
+  const handleSubmit = async (orderId) => {
+    const res = await axios.post(
+      "http://13.58.200.222:3001/admin/order/" + orderId,
+      {
+        headers: {
+          Authorization: localStorage.getItem("token"),
+        },
+      }
+    );
+    return res;
+  };
+
   const menuList = props.menuList;
   const orderlist = [];
   let sumCost = 0;
@@ -11,7 +24,7 @@ function Flex(props) {
 
     orderlist.push(
       <div>
-        {menuList[i].name +
+        {menuList[i].menuName +
           " : " +
           menuList[i].count +
           "개  " +
@@ -27,7 +40,8 @@ function Flex(props) {
       <Button
         variant="contained"
         onClick={(event) => {
-          props.onChangeMode(props.topic.nickname);
+          props.onChangeMode(props.topic.orderId);
+          handleSubmit(props.topic.orderId);
         }}
       >
         완료
@@ -36,16 +50,13 @@ function Flex(props) {
   }
   return (
     <div className="FlexList">
-      <div className="left">
-        <div className="nickname">{props.topic.nickname}</div>
-        <div>{props.topic.orderOrder}</div>
-      </div>
+      <div className="nickname">{props.topic.userId}</div>
+      <div className="ordernumber">{props.topic.orderId}</div>
       {/* <div className="mid">{props.topic.menu}</div> */}
       <div className="mid">{orderlist}</div>
-      <div className="right">
-        <div className="totalCost">{sumCost + "원"}</div>
-        <div>{props.topic.orderAt}</div>
-        {/* <Button
+      <div className="totalCost">{sumCost + "원"}</div>
+      <div className="ordertime">{props.topic.orderedAt}</div>
+      {/* <Button
           variant="contained"
           onClick={(event) => {
             props.onChangeMode(props.topic.nickname);
@@ -53,8 +64,7 @@ function Flex(props) {
         >
           완료
         </Button> */}
-        {buttonAdmin}
-      </div>
+      {buttonAdmin}
     </div>
   );
 }
