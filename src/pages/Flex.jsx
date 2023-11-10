@@ -36,16 +36,13 @@ function Flex(props) {
   }
   return (
     <div className="FlexList">
-      <div className="left">
-        <div className="nickname">{props.topic.nickname}</div>
-        <div>{props.topic.orderOrder}</div>
-      </div>
+      <div className="nickname">{props.topic.nickname}</div>
+      <div className="ordernumber">{props.topic.orderOrder}</div>
       {/* <div className="mid">{props.topic.menu}</div> */}
       <div className="mid">{orderlist}</div>
-      <div className="right">
-        <div className="totalCost">{sumCost + "원"}</div>
-        <div>{props.topic.orderAt}</div>
-        {/* <Button
+      <div className="totalCost">{sumCost + "원"}</div>
+      <div className="ordertime">{props.topic.orderAt}</div>
+      {/* <Button
           variant="contained"
           onClick={(event) => {
             props.onChangeMode(props.topic.nickname);
@@ -53,8 +50,7 @@ function Flex(props) {
         >
           완료
         </Button> */}
-        {buttonAdmin}
-      </div>
+      {buttonAdmin}
     </div>
   );
 }
